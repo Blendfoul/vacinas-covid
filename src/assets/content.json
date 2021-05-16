@@ -1,0 +1,58 @@
+{
+  "list": [
+    {
+      "name": "Página Inicial",
+      "icon": "home",
+      "route": ""
+    },
+    {
+      "name": "Vacinas",
+      "icon": "location_on",
+      "route": "vacinas"
+    },
+    {
+      "name": "Estatisticas",
+      "icon": "trending_up",
+      "route": "estatisticas"
+    },
+    {
+      "name": "Informações",
+      "icon": "info",
+      "route": "info"
+    }
+  ],
+  "vaccines": [
+    {
+      "name": "Astrazeneca",
+      "year": 2021,
+      "info": "baelelelele",
+      "img": "astrazeneca.png",
+      "doses": 2,
+      "time": 1
+    },
+    {
+      "name": "Pfeizer",
+      "year": 2021,
+      "info": "baelelelele",
+      "img": "pfizer.png",
+      "doses": 2,
+      "time": 1
+    },
+    {
+      "name": "Johnson",
+      "year": 2021,
+      "info": "Vai ter alguma informaç6ão sobre a vacina dfbalnksd aldsknvs lk nvaklsd naklsdvn akldnvalksdnv akldndlk nalsdal dnvklasdnv aklsdn aklsdv naklsd \n anklsdnvalksd nvaklsdnv aklsnklsdvnl",
+      "img": "johnson.png",
+      "doses": 2,
+      "time": 1
+    },
+    {
+      "name": "Moderna",
+      "year": 2021,
+      "info": "baelelelele",
+      "img": "moderna.png",
+      "doses": 2,
+      "time": 1
+    }
+  ]
+}

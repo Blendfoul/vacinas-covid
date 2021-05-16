@@ -1,25 +1,30 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Covid",
+  "name": "Vacinas Covid-19",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "pfizer.png",
+      "type": "image/png",
+      "sizes": "524x162"
     },
     {
-      "src": "logo192.png",
+      "src": "astrazeneca.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "1280x512"
     },
     {
-      "src": "logo512.png",
+      "src": "moderna.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "1920x945"
+    },
+    {
+      "src": "johnson.png",
+      "type": "image/png",
+      "sizes": "3840x2160"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#418b82",
   "background_color": "#ffffff"
 }
