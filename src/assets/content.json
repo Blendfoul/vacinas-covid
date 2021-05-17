@@ -16,6 +16,11 @@
       "route": "estatisticas"
     },
     {
+      "name": "Marcação",
+      "icon": "calendar",
+      "route": "marcar"
+    },
+    {
       "name": "Informações",
       "icon": "info",
       "route": "info"
@@ -23,36 +28,54 @@
   ],
   "vaccines": [
     {
-      "name": "Astrazeneca",
-      "year": 2021,
-      "info": "baelelelele",
-      "img": "astrazeneca.png",
-      "doses": 2,
-      "time": 1
-    },
-    {
       "name": "Pfeizer",
       "year": 2021,
-      "info": "baelelelele",
+      "info": "",
       "img": "pfizer.png",
       "doses": 2,
-      "time": 1
-    },
-    {
-      "name": "Johnson",
-      "year": 2021,
-      "info": "Vai ter alguma informaç6ão sobre a vacina dfbalnksd aldsknvs lk nvaklsd naklsdvn akldnvalksdnv akldndlk nalsdal dnvklasdnv aklsdn aklsdv naklsd \n anklsdnvalksd nvaklsdnv aklsnklsdvnl",
-      "img": "johnson.png",
-      "doses": 2,
-      "time": 1
+      "time": 21,
+      "armEffects": [
+        "Dor",
+        "Inchaço",
+        "Inflamação"
+      ],
+      "bodyEffects": [
+        "Cansaço",
+        "Dores de cabeça",
+        "Dores musculares",
+        "Tremores",
+        "Febre",
+        "Nausea"
+      ],
+      "method": "Administração na parte superior do braço",
+      "manufacturer": "Pfizer, Inc., e BioNTech",
+      "type": "mRNA",
+      "codeName": "BNT162b2"
     },
     {
       "name": "Moderna",
       "year": 2021,
-      "info": "baelelelele",
+      "info": "",
       "img": "moderna.png",
       "doses": 2,
-      "time": 1
+      "time": 28,
+      "armEffects": [
+        "Dor",
+        "Inchaço",
+        "Inflamação"
+      ],
+      "bodyEffects": [
+        "Cansaço",
+        "Dores de cabeça",
+        "Dores musculares",
+        "Tremores",
+        "Febre",
+        "Nausea"
+      ],
+      "method": "Administração na parte superior do braço",
+      "manufacturer": "ModernaTX, Inc.",
+      "type": "mRNA",
+      "codeName": "mRNA-1273"
     }
   ]
 }

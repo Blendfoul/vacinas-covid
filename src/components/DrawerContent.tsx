@@ -8,6 +8,7 @@ import InfoIcon from '@material-ui/icons/Info';
 
 
 import * as content from '../assets/content.json';
+import {CalendarToday} from "@material-ui/icons";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -37,6 +38,8 @@ const DrawerContent: React.FC<any> = () => {
         return <HomeIcon/>;
       case 'info':
         return <InfoIcon/>;
+      case 'calendar':
+        return <CalendarToday />;
       default:
         return null;
     }

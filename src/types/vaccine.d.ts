@@ -5,6 +5,12 @@ export interface Vaccine {
   doses: number;
   time: number;
   year: number;
+  method: string;
+  manufacturer: string;
+  codeName: string;
+  armEffects: string[];
+  bodyEffects: string[];
+  type: string;
 }
 
 export interface VaccineProps {

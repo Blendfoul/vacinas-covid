@@ -25,7 +25,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
     <React.StrictMode>
         <MuiThemeProvider theme={theme}>
-            <App/>
+            <div style={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
+                <App />
+            </div>
         </MuiThemeProvider>
     </React.StrictMode>,
     document.getElementById('root')
