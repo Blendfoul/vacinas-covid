@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import {
   Box,
   Breadcrumbs,
   Container,
   createStyles,
-  Divider,
-  Grid, IconButton,
+  Grid,
+  IconButton,
   List,
   ListItem,
   ListItemText,
@@ -15,13 +15,13 @@ import {
   Paper,
   Tab,
   Tabs,
-  Typography
+  Typography, withWidth
 } from "@material-ui/core";
 import {Vaccine} from "../types/vaccine";
 import {vaccines} from '../assets/content.json';
 import TabPanel from "./TabPanel";
 import {ArrowBack} from "@material-ui/icons";
-import {useHistory} from 'react-router-dom';
+import Item from "./Item";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -42,6 +42,13 @@ const useStyles = makeStyles(() =>
       },
       color: 'inherit',
       marginLeft: 'auto'
+    },
+    text: {
+      textAlign: 'justify'
+    },
+    paper: {
+      display: 'flex',
+      justifyContent: 'center'
     }
   }));
 
@@ -92,45 +99,29 @@ const VaccineExtended: React.FC<any> = () => {
                   </Grid>
                 </Box>
               </Grid>
-              <Divider variant="middle"/>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                indicatorColor="primary"
-                textColor="primary"
-                centered
-              >
-                <Tab label="Geral"/>
-                <Tab label="Efeitos Secundários"/>
-                <Tab label="Sumário"/>
-              </Tabs>
+              <Paper elevation={0} className={classes.paper} >
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  indicatorColor="secondary"
+                  textColor="secondary"
+                  variant={'scrollable'}
+                  scrollButtons="auto"
+                >
+                  <Tab label="Geral"/>
+                  <Tab label="Efeitos Secundários"/>
+                  <Tab label="Sumário"/>
+                </Tabs>
+              </Paper>
               <TabPanel index={0} value={value}>
-                <Box py={4} px={1}>
+                <Box py={2} px={1}>
                   <Grid container direction={'row'} justify={'center'} alignItems={'center'}>
-                    <Grid item xs={6} sm={4}>
-                      <Typography variant={'h6'}>Nome</Typography>
-                      <Typography variant={'body1'}>{data.codeName}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Typography variant={'h6'}>Produtor</Typography>
-                      <Typography variant={'body1'}>{data.manufacturer}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Typography variant={'h6'}>Tipo</Typography>
-                      <Typography variant={'body1'}>{data.type}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Typography variant={'h6'}>Produção</Typography>
-                      <Typography variant={'body1'}>{data.year}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Typography variant={'h6'}>Doses</Typography>
-                      <Typography variant={'body1'}>{data.doses}</Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={4}>
-                      <Typography variant={'h6'}>Distância doses</Typography>
-                      <Typography variant={'body1'}>{data.time} dias</Typography>
-                    </Grid>
+                    <Item xs={6} sm={4} primary={'Nome'} secondary={data.codeName}/>
+                    <Item xs={6} sm={4} primary={'Produtor'} secondary={data.manufacturer}/>
+                    <Item xs={6} sm={4} primary={'Tipo'} secondary={data.type}/>
+                    <Item xs={6} sm={4} primary={'Produção'} secondary={data.year}/>
+                    <Item xs={6} sm={4} primary={'Doses'} secondary={data.doses}/>
+                    <Item xs={6} sm={4} primary={'Distância doses'} secondary={`${data.time} dias`}/>
                   </Grid>
                 </Box>
               </TabPanel>
@@ -174,6 +165,23 @@ const VaccineExtended: React.FC<any> = () => {
                   </Grid>
                 </Box>
               </TabPanel>
+              <TabPanel index={2} value={value}>
+                <Box p={2}>
+                  <Grid container direction={'row'}>
+                    <Grid item xs={12}>
+                      <List>
+                        {
+                          data.summary.map((item, index) => (
+                            <ListItem key={`sum-${index}`}>
+                              <ListItemText primary={item} className={classes.text}/>
+                            </ListItem>
+                          ))
+                        }
+                      </List>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </TabPanel>
             </Box>
           </Paper>
         </Box>
@@ -182,4 +190,4 @@ const VaccineExtended: React.FC<any> = () => {
     null;
 }
 
-export default VaccineExtended;
+export default withWidth()(VaccineExtended);

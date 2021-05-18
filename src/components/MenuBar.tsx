@@ -4,7 +4,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import DrawerContent from "./DrawerContent";
 import {NavLink} from 'react-router-dom';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     title: {
       flexGrow: 1,
@@ -13,10 +13,11 @@ const useStyles = makeStyles(() =>
       textEmphasis: undefined,
       textDecoration: 'none',
       "&:hover": {
-        textDecoration: 'underline'
+        textDecoration: 'underline',
+        color: theme.palette.secondary.main
       },
-      color: 'inherit'
-    }
+      color: theme.palette.primary.contrastText
+    },
   }));
 
 const MenuBar: React.FC<any> = () => {

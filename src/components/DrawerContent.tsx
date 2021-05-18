@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStyles, ListItem, ListItemIcon, ListItemText, makeStyles} from "@material-ui/core";
-import {NavLink} from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import HomeIcon from '@material-ui/icons/Home';
@@ -10,10 +10,13 @@ import InfoIcon from '@material-ui/icons/Info';
 import * as content from '../assets/content.json';
 import {CalendarToday} from "@material-ui/icons";
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     list: {
       width: 250,
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
+      height: '100%'
     },
     link: {
       textEmphasis: undefined,
@@ -22,11 +25,18 @@ const useStyles = makeStyles(() =>
         textDecoration: undefined
       },
       color: 'inherit'
+    },
+    item: {
+      color: theme.palette.primary.contrastText,
+    },
+    itemSelected: {
+      color: theme.palette.secondary.main
     }
   }));
 
 const DrawerContent: React.FC<any> = () => {
   const classes = useStyles();
+  const location = useLocation();
 
   const iconSelect = (name: string) => {
     switch (name) {
@@ -49,15 +59,15 @@ const DrawerContent: React.FC<any> = () => {
     <div className={classes.list}>
       {
         content.list.map((item, index) => (
-          <NavLink to={`/${item.route}`} className={classes.link}>
-            <ListItem button key={`drawer-${index}`}>
-              <ListItemIcon>
+          <NavLink to={item.route} className={classes.link} key={`drawer-${index}`}>
+            <ListItem button selected={item.route === location.pathname}
+                      className={item.route === location.pathname ? classes.itemSelected : classes.item}>
+              <ListItemIcon className={item.route === location.pathname ? classes.itemSelected : classes.item}>
                 {iconSelect(item.icon)}
               </ListItemIcon>
-              <ListItemText primary={item.name}/>
+              <ListItemText primary={item.name} />
             </ListItem>
           </NavLink>
-
         ))
       }
     </div>

@@ -44,7 +44,7 @@ const Vaccine: React.FC<VaccineProps> = ({data}) => {
   const match = useRouteMatch();
 
   return (
-    <Card variant="outlined" className={classes.root}>
+    <Card variant="outlined" className={classes.root} elevation={3}>
       <div className={classes.container}>
         <CardMedia
           className={classes.media}

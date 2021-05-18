@@ -3,27 +3,27 @@
     {
       "name": "Página Inicial",
       "icon": "home",
-      "route": ""
+      "route": "/"
     },
     {
       "name": "Vacinas",
       "icon": "location_on",
-      "route": "vacinas"
+      "route": "/vacinas"
     },
     {
       "name": "Estatisticas",
       "icon": "trending_up",
-      "route": "estatisticas"
+      "route": "/estatisticas"
     },
     {
       "name": "Marcação",
       "icon": "calendar",
-      "route": "marcar"
+      "route": "/marcar"
     },
     {
       "name": "Informações",
       "icon": "info",
-      "route": "info"
+      "route": "/info"
     }
   ],
   "vaccines": [
@@ -50,7 +50,12 @@
       "method": "Administração na parte superior do braço",
       "manufacturer": "Pfizer, Inc., e BioNTech",
       "type": "mRNA",
-      "codeName": "BNT162b2"
+      "codeName": "BNT162b2",
+      "summary": [
+        "A maioria dos efeitos colaterais foram leves a moderados. No entanto, um pequeno número de pessoas apresentou efeitos colaterais graves que afetaram sua capacidade de realizar atividades diárias.",
+        "Os efeitos colaterais (como febre, calafrios, cansaço e dor de cabeça) em todo o corpo foram mais comuns após a segunda dose da vacina.",
+        "A vacina pareceu ter alta eficácia em ensaios clínicos (eficácia) entre pessoas de diversas categorias de idade, sexo, raça e etnia e entre pessoas com condições médicas subjacentes."
+      ]
     },
     {
       "name": "Moderna",
@@ -75,7 +80,12 @@
       "method": "Administração na parte superior do braço",
       "manufacturer": "ModernaTX, Inc.",
       "type": "mRNA",
-      "codeName": "mRNA-1273"
+      "codeName": "mRNA-1273",
+      "summary": [
+        "A maioria dos efeitos colaterais foram leves a moderados. No entanto, um pequeno número de pessoas apresentou efeitos colaterais graves que afetaram sua capacidade de realizar atividades diárias.",
+        "Os efeitos colaterais (como febre, calafrios, cansaço e dor de cabeça) em todo o corpo foram mais comuns após a segunda dose da vacina.",
+        "A vacina pareceu ter alta eficácia em ensaios clínicos (eficácia) entre pessoas de diversas categorias de idade, sexo, raça e etnia e entre pessoas com condições médicas subjacentes."
+      ]
     }
   ]
 }
