@@ -10,7 +10,7 @@ const TabPanel: React.FC<TabPanelProps> = props => {
   const { children, value, index, ...other } = props;
 
   return (
-    <div role="panel" hidden={value !== index} {...other}>
+    <div role="tabPanel" hidden={value !== index} {...other}>
       {value === index && (children)}
     </div>);
 };

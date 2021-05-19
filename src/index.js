@@ -10,7 +10,7 @@ const theme = createMuiTheme({
         primary: {
             light: '#4A6572',
             main: '#344955',
-            dark: '232F34',
+            dark: '#232F34',
             contrastText: '#fff',
         },
         secondary: {
@@ -26,7 +26,7 @@ ReactDOM.render(
     <React.StrictMode>
         <MuiThemeProvider theme={theme}>
             <div style={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
-                <App />
+                <App/>
             </div>
         </MuiThemeProvider>
     </React.StrictMode>,

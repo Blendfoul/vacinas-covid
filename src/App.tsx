@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MenuBar from "./components/MenuBar";
 import {
   BrowserRouter as Router,
@@ -11,34 +11,42 @@ import VaccineExtended from "./components/VaccineExtended";
 import Footer from "./components/Footer";
 import Info from "./components/Info";
 import Stats from "./components/Stats";
+import ScheduleComponent from "./components/ScheduleComponent";
+import CovidContext from "./store/CovidContext";
 
 const App: React.FC<any> = () => {
+  const [enabled, setEnabled] = useState(true);
+
   return (
-    <Router>
-      <MenuBar/>
+    <CovidContext.Provider value={{enabled, setEnabled}}>
+      <Router>
+        <MenuBar/>
+        <div style={{flex: 1}}>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/vacinas" exact>
+              <Vaccines />
+            </Route>
+            <Route path={`/vacinas/:name`}>
+              <VaccineExtended />
+            </Route>
+            <Route path="/estatisticas">
+              <Stats />
+            </Route>
+            <Route path={'/marcar'}>
+              <ScheduleComponent />
+            </Route>
+            <Route path="/info">
+              <Info />
+            </Route>
+          </Switch>
+        </div>
 
-      <div style={{flex: 1}}>
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/vacinas" exact>
-            <Vaccines />
-          </Route>
-          <Route path={`/vacinas/:name`}>
-            <VaccineExtended />
-          </Route>
-          <Route path="/estatisticas">
-            <Stats />
-          </Route>
-          <Route path="/info">
-            <Info />
-          </Route>
-        </Switch>
-      </div>
-
-      <Footer/>
-    </Router>
+        <Footer/>
+      </Router>
+    </CovidContext.Provider>
   )
 };
 

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {Link, useHistory, useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import {
   Box,
-  Breadcrumbs,
   Container,
   createStyles,
   Grid,
@@ -15,13 +14,14 @@ import {
   Paper,
   Tab,
   Tabs,
-  Typography, withWidth
+  withWidth
 } from "@material-ui/core";
 import {Vaccine} from "../types/vaccine";
 import {vaccines} from '../assets/content.json';
 import TabPanel from "./TabPanel";
 import {ArrowBack} from "@material-ui/icons";
 import Item from "./Item";
+import BreadCrumbs from "./BreadCrumbs";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -75,17 +75,7 @@ const VaccineExtended: React.FC<any> = () => {
 
   return data ? (
       <Container maxWidth={'md'}>
-        <Box m={2}>
-          <Breadcrumbs aria-label="breadcrumb">
-            <Link to="/" className={classes.link}>
-              Vacinas Covid
-            </Link>
-            <Link to="/vacinas" className={classes.link}>
-              Vacinas
-            </Link>
-            <Typography color="textPrimary">{name}</Typography>
-          </Breadcrumbs>
-        </Box>
+        <BreadCrumbs primary={name} secondary={[{name: 'Página Inicial', route: ''}, {name: 'Vacinas', route: 'vacinas'}]} />
         <Box py={2}>
           <Paper elevation={3}>
             <Box p={3}>

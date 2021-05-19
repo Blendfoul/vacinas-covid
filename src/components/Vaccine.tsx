@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import {Link, useRouteMatch} from 'react-router-dom';
 import {Add} from "@material-ui/icons";
+import CovidContext from "../store/CovidContext";
+import {playSound} from "../hooks/soundHook";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -61,11 +63,16 @@ const Vaccine: React.FC<VaccineProps> = ({data}) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Link to={`${match.path}/${data.name}`} className={classes.link}>
-          <IconButton aria-label="Mais Informações">
-            <Add/>
-          </IconButton>
-        </Link>
+        <CovidContext.Consumer>
+          {
+            ({enabled}) => (
+            <Link to={`${match.path}/${data.name}`} className={classes.link}>
+              <IconButton aria-label="Mais Informações" onMouseEnter={() => enabled ? playSound(data.audio) : null}>
+                <Add/>
+              </IconButton>
+            </Link>)
+          }
+        </CovidContext.Consumer>
       </CardActions>
     </Card>
   );

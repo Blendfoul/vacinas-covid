@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) =>
       alignItems: 'flex-end',
       backgroundColor: theme.palette.primary.main,
       paddingVertical: 10,
+      marginTop: 10,
       flexDirection: 'column'
     },
     text: {

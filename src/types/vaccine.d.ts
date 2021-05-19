@@ -12,6 +12,7 @@ export interface Vaccine {
   bodyEffects: string[];
   type: string;
   summary: string[];
+  audio: string;
 }
 
 export interface VaccineProps {

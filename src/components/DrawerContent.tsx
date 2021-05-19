@@ -5,10 +5,10 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
-
-
 import * as content from '../assets/content.json';
 import {CalendarToday} from "@material-ui/icons";
+import CovidContext from "../store/CovidContext";
+import {playSound} from "../hooks/soundHook";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -60,13 +60,19 @@ const DrawerContent: React.FC<any> = () => {
       {
         content.list.map((item, index) => (
           <NavLink to={item.route} className={classes.link} key={`drawer-${index}`}>
-            <ListItem button selected={item.route === location.pathname}
-                      className={item.route === location.pathname ? classes.itemSelected : classes.item}>
-              <ListItemIcon className={item.route === location.pathname ? classes.itemSelected : classes.item}>
-                {iconSelect(item.icon)}
-              </ListItemIcon>
-              <ListItemText primary={item.name} />
-            </ListItem>
+            <CovidContext.Consumer>
+              {({enabled}) => (
+                <ListItem button selected={item.route === location.pathname}
+                          className={item.route === location.pathname ? classes.itemSelected : classes.item}
+                          onMouseEnter={() => enabled ? playSound(item.audio): null}>
+                  <ListItemIcon className={item.route === location.pathname ? classes.itemSelected : classes.item}>
+                    {iconSelect(item.icon)}
+                  </ListItemIcon>
+                  <ListItemText primary={item.name} />
+                </ListItem>
+              )}
+            </CovidContext.Consumer>
+
           </NavLink>
         ))
       }

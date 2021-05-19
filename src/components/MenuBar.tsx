@@ -2,7 +2,10 @@ import React, {useState} from "react";
 import {AppBar, createStyles, Drawer, IconButton, makeStyles, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import DrawerContent from "./DrawerContent";
-import {NavLink} from 'react-router-dom';
+import CovidContext from "../store/CovidContext";
+import {playSound} from "../hooks/soundHook";
+import {VolumeOff, VolumeUp} from "@material-ui/icons";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -18,6 +21,10 @@ const useStyles = makeStyles((theme) =>
       },
       color: theme.palette.primary.contrastText
     },
+    sound: {
+      marginLeft: 'auto',
+      color: theme.palette.secondary.main
+    }
   }));
 
 const MenuBar: React.FC<any> = () => {
@@ -30,14 +37,28 @@ const MenuBar: React.FC<any> = () => {
     <React.Fragment>
       <AppBar position="sticky">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleDrawer}>
-            <MenuIcon/>
-          </IconButton>
-          <NavLink to={'/'} className={classes.link}>
-            <Typography variant="h5" className={classes.title}>
-              Vacinas Covid
-            </Typography>
-          </NavLink>
+          <CovidContext.Consumer>
+            {
+              ({enabled, setEnabled}) => (
+                <>
+                  <IconButton edge="start" color="inherit"
+                              aria-label="menu" onClick={toggleDrawer}
+                              onMouseEnter={() => enabled ? playSound('/sounds/menu.mp3') : null}>
+                    <MenuIcon/>
+                  </IconButton>
+                  <NavLink to={'/'} className={classes.link}>
+                    <Typography variant="h5" className={classes.title}>
+                      Vacinas Covid
+                    </Typography>
+                  </NavLink>
+
+                  <IconButton className={classes.sound} onClick={() => setEnabled ? setEnabled(!enabled) : null}>
+                    {enabled ? <VolumeUp/> : <VolumeOff/>}
+                  </IconButton>
+                </>
+              )
+            }
+          </CovidContext.Consumer>
         </Toolbar>
       </AppBar>
       <Drawer anchor={'left'} open={open} onClose={toggleDrawer}>

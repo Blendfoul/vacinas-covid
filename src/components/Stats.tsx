@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {
   Box,
-  Breadcrumbs,
   Container,
   createStyles,
   Divider,
@@ -11,24 +10,14 @@ import {
   Paper,
   Select,
   Theme,
-  Typography
 } from "@material-ui/core";
-import {Link} from "react-router-dom";
 import axios, {AxiosRequestConfig} from "axios";
 import {Statistics} from "../types/Statistics";
 import CovidData from "./CovidData";
+import BreadCrumbs from "./BreadCrumbs";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    link: {
-      textEmphasis: undefined,
-      textDecoration: 'none',
-      "&:hover": {
-        textDecoration: 'underline'
-      },
-      color: 'inherit',
-      marginLeft: 'auto'
-    },
     formControl: {
       margin: theme.spacing(1),
       minWidth: 200,
@@ -102,14 +91,7 @@ const Stats: React.FC<any> = () => {
 
   return (
     <Container>
-      <Box m={2}>
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link to="/" className={classes.link}>
-            Vacinas Covid
-          </Link>
-          <Typography color="textPrimary">Estatisticas</Typography>
-        </Breadcrumbs>
-      </Box>
+      <BreadCrumbs primary={"Estatisticas"} secondary={[{name: 'Página Inicial', route: ''}]} />
       <Box py={2}>
         <Paper elevation={3}>
           <Box p={2}>
