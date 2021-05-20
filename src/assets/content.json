@@ -93,6 +93,66 @@
         "Os efeitos colaterais (como febre, calafrios, cansaço e dor de cabeça) em todo o corpo foram mais comuns após a segunda dose da vacina.",
         "A vacina pareceu ter alta eficácia em ensaios clínicos (eficácia) entre pessoas de diversas categorias de idade, sexo, raça e etnia e entre pessoas com condições médicas subjacentes."
       ]
+    },
+    {
+      "name": "Johnson & Johnson’s",
+      "year": 2021,
+      "info": "",
+      "audio": "/sounds/infoJohnsson.mp3",
+      "img": "johnson.png",
+      "doses": 1,
+      "time": 0,
+      "armEffects": [
+        "Dor",
+        "Inchaço",
+        "Inflamação"
+      ],
+      "bodyEffects": [
+        "Cansaço",
+        "Dores de cabeça",
+        "Dores musculares",
+        "Tremores",
+        "Febre",
+        "Nausea"
+      ],
+      "method": "Administração na parte superior do braço",
+      "manufacturer": "Janssen Pharmaceuticals",
+      "type": "Viral Vector",
+      "codeName": "mRNA-1273",
+      "summary": [
+        "Desmaios (síncope) e outros eventos que podem estar relacionados à ansiedade, como respiração rápida, pressão arterial baixa, dormência ou formigamento, podem ocorrer após a administração de qualquer vacina. Embora incomuns, esses eventos não são inesperados e geralmente não são graves.",
+        "De acordo com informações do Sistema de Notificação de Eventos Adversos de Vacinas (VAERS), houve 653 relatos de eventos de desmaio (desmaios e quase desmaios) entre quase 8 milhões de doses da vacina J & J / Janssen administrada nos Estados Unidos em março e abril de 2021. Isso se traduz em uma taxa de cerca de 8 desmaios para cada 100.000 doses da vacina J & J / Janssen COVID-19 administrada. Esses eventos ocorreram durante a espera recomendada de 15 minutos após a vacinação. Não está claro neste momento se esses eventos foram associados à vacina ou à ansiedade, possivelmente relacionados a preocupações preexistentes que algumas pessoas que optaram por receber a vacina J & J / Janssen de dose única podem ter sobre agulhas ou injeções."
+      ]
+    },
+    {
+      "name": "Astrazeneca",
+      "year": 2021,
+      "info": "",
+      "audio": "/sounds/infoAstrazeneca.mp3",
+      "img": "astrazeneca.png",
+      "doses": 2,
+      "time": 28,
+      "armEffects": [
+        "Dor",
+        "Inchaço",
+        "Inflamação"
+      ],
+      "bodyEffects": [
+        "Cansaço",
+        "Dores de cabeça",
+        "Dores musculares",
+        "Tremores",
+        "Febre",
+        "Nausea"
+      ],
+      "method": "Administração na parte superior do braço",
+      "manufacturer": "AstraZeneca Plc.",
+      "type": "Viral Vector",
+      "codeName": "AZD1222",
+      "summary": [
+        "Desmaios (síncope) e outros eventos que podem estar relacionados à ansiedade, como respiração rápida, pressão arterial baixa, dormência ou formigamento, podem ocorrer após a administração de qualquer vacina. Embora incomuns, esses eventos não são inesperados e geralmente não são graves.",
+        "De acordo com informações do Sistema de Notificação de Eventos Adversos de Vacinas (VAERS), houve 653 relatos de eventos de desmaio (desmaios e quase desmaios) entre quase 8 milhões de doses da vacina J & J / Janssen administrada nos Estados Unidos em março e abril de 2021. Isso se traduz em uma taxa de cerca de 8 desmaios para cada 100.000 doses da vacina J & J / Janssen COVID-19 administrada. Esses eventos ocorreram durante a espera recomendada de 15 minutos após a vacinação. Não está claro neste momento se esses eventos foram associados à vacina ou à ansiedade, possivelmente relacionados a preocupações preexistentes que algumas pessoas que optaram por receber a vacina J & J / Janssen de dose única podem ter sobre agulhas ou injeções."
+      ]
     }
   ],
   "info": [

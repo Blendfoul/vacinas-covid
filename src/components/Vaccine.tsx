@@ -8,7 +8,8 @@ import {playSound} from "../hooks/soundHook";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      marginTop: 15
+      marginTop: 15,
+      height: '100%'
     },
     media: {
       maxWidth: '100%',
@@ -52,7 +53,7 @@ const Vaccine: React.FC<VaccineProps> = ({data}) => {
                   />
                 </div>
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h5" component="h2" color={'primary'}>
                     {data.name}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">

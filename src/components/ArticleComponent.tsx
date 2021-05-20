@@ -1,11 +1,13 @@
 import React from "react";
 import {Article} from "../types/News";
 import {
-  Card, CardActions,
+  Card,
+  CardActions,
   CardContent,
   CardMedia,
   createStyles,
-  Grid, Link,
+  Grid,
+  Link,
   makeStyles,
   Typography
 } from "@material-ui/core";
@@ -79,7 +81,7 @@ const ArticleComponent: React.FC<ArticleProps> = ({data}) => {
             <Grid item xs>
               <div style={{display: 'flex', alignItems: 'center'}}>
                 <AccessTime color={'secondary'}/>
-                <Typography variant={"caption"} color={'textSecondary'}>{data.publishedAt}</Typography>
+                <Typography variant={"caption"} color={'textSecondary'}>{new Date(data.publishedAt).toUTCString()}</Typography>
               </div>
             </Grid>
           </Grid>

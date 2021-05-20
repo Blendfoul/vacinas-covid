@@ -19,6 +19,9 @@ const useStyles = makeStyles(() =>
       color: 'inherit',
       marginLeft: 'auto'
     },
+    item: {
+      height: '100%'
+    }
   }));
 
 const Vaccines: React.FC<any> = () => {
@@ -38,8 +41,12 @@ const Vaccines: React.FC<any> = () => {
         container direction="row"
         justify="center" alignItems="center" spacing={2} className={classes.root}>
         {
-          vaccines.map((item, index) => <Grid item xs={12} md={3} key={`vaccine-${index}`}><Vaccine
-            data={item}/></Grid>)
+          vaccines.map((item, index) => (
+            <Grid item xs={12} md={3} key={`vaccine-${index}`} className={classes.item}>
+              <Vaccine data={item}/>
+            </Grid>
+            )
+          )
         }
       </Grid>
     </Container>
