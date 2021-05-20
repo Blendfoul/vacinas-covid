@@ -2,10 +2,10 @@ import React, {useEffect, useState} from "react";
 import {useHistory, useParams} from 'react-router-dom';
 import {
   Box,
+  Button,
   Container,
   createStyles,
   Grid,
-  IconButton,
   List,
   ListItem,
   ListItemText,
@@ -14,6 +14,7 @@ import {
   Paper,
   Tab,
   Tabs,
+  Typography,
   withWidth
 } from "@material-ui/core";
 import {Vaccine} from "../types/vaccine";
@@ -79,9 +80,9 @@ const VaccineExtended: React.FC<any> = () => {
         <Box py={2}>
           <Paper elevation={3}>
             <Box p={3}>
-              <IconButton edge="start" color="inherit" aria-label="go Back" onClick={backToVaccines}>
-                <ArrowBack/>
-              </IconButton>
+              <Button color="inherit" onClick={backToVaccines} startIcon={<ArrowBack color={'primary'}/>}>
+                <Typography variant={'caption'} color={'primary'}>Voltar</Typography>
+              </Button>
               <Grid container spacing={2} direction="row" justify={'center'} alignItems={'center'}>
                 <Box px={1} py={3}>
                   <Grid item xs={12}>
