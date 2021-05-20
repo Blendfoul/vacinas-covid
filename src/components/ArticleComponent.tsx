@@ -23,7 +23,7 @@ const useStyles = makeStyles(() =>
     },
     media: {
       maxWidth: '100%',
-      height: 200,
+      height: 300,
       objectFit: 'contain',
       resizeMode: 'contain',
       objectPosition: 'center'

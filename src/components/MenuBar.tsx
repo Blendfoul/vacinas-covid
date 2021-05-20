@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import {AppBar, createStyles, Drawer, IconButton, makeStyles, Toolbar, Typography} from "@material-ui/core";
+import {AppBar, createStyles, Divider, Drawer, IconButton, makeStyles, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import DrawerContent from "./DrawerContent";
 import CovidContext from "../store/CovidContext";
 import {playSound} from "../hooks/soundHook";
 import {VolumeOff, VolumeUp} from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -24,6 +25,17 @@ const useStyles = makeStyles((theme) =>
     sound: {
       marginLeft: 'auto',
       color: theme.palette.secondary.main
+    },
+    logo: {
+      objectFit: 'contain',
+      objectPosition: 'center',
+      resizeMode: 'contain'
+    },
+    drawerHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'row',
+      backgroundColor: theme.palette.primary.dark
     }
   }));
 
@@ -47,11 +59,8 @@ const MenuBar: React.FC<any> = () => {
                     <MenuIcon/>
                   </IconButton>
                   <NavLink to={'/'} className={classes.link}>
-                    <Typography variant="h5" className={classes.title}>
-                      Vacinas Covid
-                    </Typography>
+                    <img src={'/logo.png'} alt={'Vacinas Covid'} className={classes.logo}/>
                   </NavLink>
-
                   <IconButton className={classes.sound} onClick={() => setEnabled ? setEnabled(!enabled) : null}>
                     {enabled ? <VolumeUp/> : <VolumeOff/>}
                   </IconButton>
@@ -62,6 +71,13 @@ const MenuBar: React.FC<any> = () => {
         </Toolbar>
       </AppBar>
       <Drawer anchor={'left'} open={open} onClose={toggleDrawer}>
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={toggleDrawer}>
+            <ChevronLeftIcon color={'secondary'}/>
+          </IconButton>
+          <img src={'/logo.png'} alt={'Vacinas Covid'} className={classes.logo}/>
+        </div>
+        <Divider color={'secondary'}/>
         <DrawerContent/>
       </Drawer>
     </React.Fragment>

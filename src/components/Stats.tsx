@@ -6,10 +6,10 @@ import {
   Divider,
   FormControl,
   InputLabel,
-  makeStyles,
+  makeStyles, MenuItem,
   Paper,
   Select,
-  Theme,
+  Theme, Typography,
 } from "@material-ui/core";
 import axios, {AxiosRequestConfig} from "axios";
 import {Statistics} from "../types/Statistics";
@@ -95,19 +95,18 @@ const Stats: React.FC<any> = () => {
       <Box py={2}>
         <Paper elevation={3}>
           <Box p={2}>
+            <Typography variant={'h6'} color={'secondary'}>Estatísticas de concelhos</Typography>
             <FormControl className={classes.formControl}>
               <InputLabel id="region-select-label">Região</InputLabel>
               <Select
-                native
                 labelId="region-select-label"
                 id="region-select"
                 value={region}
                 onChange={handleChange}
               >
-                <option value={''}/>
                 {
-                  availableRegions.map((region) => <option key={`region-${region}`}
-                                                             value={region}>{region.toLocaleLowerCase('PT')}</option>)
+                  availableRegions.map((region) => <MenuItem key={`region-${region}`}
+                                                             value={region}>{region.toLocaleLowerCase('PT')}</MenuItem>)
                 }
               </Select>
             </FormControl>

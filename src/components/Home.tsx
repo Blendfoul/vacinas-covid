@@ -49,7 +49,7 @@ const Home: React.FC<any> = () => {
       <Box my={2}>
         <Grid container direction={'row'} justify={'center'} spacing={2}>
           {
-            newsData !== null && newsData.map(article => <ArticleComponent data={article} key={`news-${article.title}`}/>)
+            newsData && newsData.map(article => <ArticleComponent data={article} key={`news-${article.title}`}/>)
           }
         </Grid>
       </Box>

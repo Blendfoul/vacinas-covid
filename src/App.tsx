@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Vaccines from "./components/Vaccines";
 import VaccineExtended from "./components/VaccineExtended";
 import Footer from "./components/Footer";
-import Info from "./components/Info";
+import InfoComponent from "./components/InfoComponent";
 import Stats from "./components/Stats";
 import ScheduleComponent from "./components/ScheduleComponent";
 import CovidContext from "./store/CovidContext";
@@ -39,7 +39,7 @@ const App: React.FC<any> = () => {
               <ScheduleComponent />
             </Route>
             <Route path="/info">
-              <Info />
+              <InfoComponent />
             </Route>
           </Switch>
         </div>

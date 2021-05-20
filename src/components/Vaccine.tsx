@@ -1,17 +1,7 @@
 import React from "react";
 import {VaccineProps} from "../types/vaccine";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  createStyles,
-  IconButton,
-  makeStyles,
-  Typography
-} from "@material-ui/core";
+import {Card, CardActionArea, CardContent, CardMedia, createStyles, makeStyles, Typography} from "@material-ui/core";
 import {Link, useRouteMatch} from 'react-router-dom';
-import {Add} from "@material-ui/icons";
 import CovidContext from "../store/CovidContext";
 import {playSound} from "../hooks/soundHook";
 
@@ -46,35 +36,35 @@ const Vaccine: React.FC<VaccineProps> = ({data}) => {
   const match = useRouteMatch();
 
   return (
-    <Card variant="outlined" className={classes.root} elevation={3}>
-      <div className={classes.container}>
-        <CardMedia
-          className={classes.media}
-          image={data.img}
-          title={data.name}
-        />
-      </div>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {data.name}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {data.year}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <CovidContext.Consumer>
-          {
-            ({enabled}) => (
+    <CovidContext.Consumer>
+      {
+        ({enabled}) => (
+          <Card variant="elevation" className={classes.root} elevation={3}
+                onMouseEnter={() => enabled ? playSound(data.audio) : null}>
+
             <Link to={`${match.path}/${data.name}`} className={classes.link}>
-              <IconButton aria-label="Mais Informações" onMouseEnter={() => enabled ? playSound(data.audio) : null}>
-                <Add/>
-              </IconButton>
-            </Link>)
-          }
-        </CovidContext.Consumer>
-      </CardActions>
-    </Card>
+              <CardActionArea>
+                <div className={classes.container}>
+                  <CardMedia
+                    className={classes.media}
+                    image={data.img}
+                    title={data.name}
+                  />
+                </div>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {data.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {data.manufacturer}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Link>
+          </Card>
+        )
+      }
+    </CovidContext.Consumer>
   );
 };
 

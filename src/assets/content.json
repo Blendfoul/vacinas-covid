@@ -13,7 +13,7 @@
       "audio": "/sounds/vacinas.mp3"
     },
     {
-      "name": "Estatisticas",
+      "name": "Estatísticas",
       "icon": "trending_up",
       "route": "/estatisticas",
       "audio": "/sounds/stats.mp3"
@@ -96,6 +96,55 @@
     }
   ],
   "info": [
-
+    {
+      "name": "Sintomas",
+      "data": [
+        {
+          "name": "Sintomas mais comuns",
+          "data": [
+            "Febre",
+            "Tosse seca",
+            "Cansaço"
+          ]
+        },
+        {
+          "name": "Sintomas menos comuns",
+          "data": [
+            "Dores",
+            "Dores de cabeça",
+            "Dores de garganta",
+            "Diarreia",
+            "Conjuntivite",
+            "Perda de palato e/ou cheiro",
+            "Irritação da pele, ou discoloração dos dedos"
+          ]
+        },
+        {
+          "name": "Sintomas severos",
+          "data": [
+            "Dificuldade em respirar",
+            "Dores no peito",
+            "Incapacidade de movimento ou fala"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Prevenção",
+      "data": [
+        {
+          "name": "Cuidados a ter",
+          "data": [
+            "Limpar as mãos regularmente. Utilizar água e sabão, ou uma solução de alcool-gél.",
+            "Manter uma distância de segurança de pessoas a tossir ou a espirar.",
+            "Utilizar uma máscara sempre que não é possível manter uma disância segura.",
+            "Não tocar no naris, boca ou olhos.",
+            "Cobrir a boca e o nariz com o cotovelo ou com um papel sempre que tossir ou espirar.",
+            "Ficar em casa se sentir debilitado.",
+            "Se tiver algum sintoma, pedir ajuda médica."
+          ]
+        }
+      ]
+    }
   ]
 }
