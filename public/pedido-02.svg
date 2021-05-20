@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Camada_1" data-name="Camada 1" viewBox="0 0 98.55 78">
+    <path d="M59.46,65.21l-2.12-2.12L72.76,47.67a2.76,2.76,0,0,0,1-2.22v-5.6H68.18a2.75,2.75,0,0,0-2.2,1L50.56,56.31l-2.12-2.12L63.86,38.77a5.67,5.67,0,0,1,4.31-1.92H76.8v8.61a5.68,5.68,0,0,1-1.92,4.33Z"
+          fill="#F9AA33"></path>
+    <rect x="73.09" y="31.51" width="15.1" height="3" transform="translate(0.28 66.69) rotate(-45)"
+          fill="#F9AA33"></rect>
+    <rect x="52.45" y="50.89" width="3" height="17.62" transform="translate(-26.42 55.63) rotate(-45)"
+          fill="#F9AA33"></rect>
+    <rect x="39.1" y="66.76" width="3" height="12.58" transform="translate(-39.76 50.11) rotate(-45)"
+          fill="#F9AA33"></rect>
+    <rect x="37.79" y="64.9" width="18.93" height="3" transform="translate(-33.11 52.86) rotate(-45)"
+          fill="#F9AA33"></rect>
+    <rect x="66.68" y="48.29" width="3" height="5.03" transform="translate(-15.95 63.11) rotate(-45.01)"
+          fill="#F9AA33"></rect>
+    <rect x="61.35" y="53.63" width="3" height="5.03" transform="translate(-21.29 60.88) rotate(-45)"
+          fill="#F9AA33"></rect>
+    <path d="M38.6,64.42A31.76,31.76,0,1,1,74.85,29.65l-3,.31A28.76,28.76,0,1,0,39,61.45Z" fill="#F9AA33"></path>
+    <rect x="41.77" y="13.43" width="3" height="19.58" fill="#F9AA33"></rect>
+    <rect x="36.43" y="25.6" width="3" height="11.26" transform="translate(-3.69 57.33) rotate(-71.57)"
+          fill="#F9AA33"></rect>
+</svg>
