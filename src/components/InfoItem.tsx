@@ -5,11 +5,17 @@ import {
   AccordionDetails,
   AccordionSummary,
   createStyles,
-  Grid, List, ListItem, ListItemText, ListSubheader,
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
   makeStyles,
   Typography
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {playSound} from "../hooks/soundHook";
+import CovidContext from "../store/CovidContext";
 
 interface InfoItemProps {
   data: Info;
@@ -34,34 +40,41 @@ const InfoItem: React.FC<InfoItemProps> = ({data}) => {
   const classes = useStyles();
 
   return (
-    <Accordion className={classes.root}>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon color={'secondary'} />}
-        aria-label="Expand"
-      >
-        <Typography variant={"h5"}>{data.name}</Typography>
-      </AccordionSummary>
-      <AccordionDetails className={classes.content}>
-        <Grid container>
-          {
-            data.data && data.data.map(item => (
-              <Grid item xs={12} sm>
-                <List subheader={<ListSubheader component={'div'} className={classes.listTitle}>{item.name}</ListSubheader>}>
-                  {
-                    item.data.map( s => (
-                      <ListItem>
-                        <ListItemText primary={s}/>
-                      </ListItem>
-                    ))
-                  }
-                </List>
+    <CovidContext.Consumer>
+      {
+        ({enabled}) => (
+          <Accordion className={classes.root}>
+            <AccordionSummary
+              onMouseEnter={() => enabled ? playSound(data.sound) : null}
+              expandIcon={<ExpandMoreIcon color={'secondary'}/>}
+              aria-label="Expand"
+            >
+              <Typography variant={"h5"} color={'secondary'}>{data.name}</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.content}>
+              <Grid container>
+                {
+                  data.data && data.data.map(item => (
+                    <Grid item xs={12} sm>
+                      <List subheader={<ListSubheader component={'div'}
+                                                      className={classes.listTitle}>{item.name}</ListSubheader>}>
+                        {
+                          item.data.map(s => (
+                            <ListItem>
+                              <ListItemText primary={s}/>
+                            </ListItem>
+                          ))
+                        }
+                      </List>
+                    </Grid>
+                  ))
+                }
               </Grid>
-            ))
-          }
-        </Grid>
 
-      </AccordionDetails>
-    </Accordion>
+            </AccordionDetails>
+          </Accordion>)
+      }
+    </CovidContext.Consumer>
   )
 };
 

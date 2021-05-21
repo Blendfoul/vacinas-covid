@@ -5,7 +5,7 @@ import {Link, useRouteMatch} from 'react-router-dom';
 import CovidContext from "../store/CovidContext";
 import {playSound} from "../hooks/soundHook";
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       marginTop: 15,
@@ -25,7 +25,8 @@ const useStyles = makeStyles(() =>
       textEmphasis: undefined,
       textDecoration: 'none',
       "&:hover": {
-        textDecoration: 'underline'
+        textDecoration: 'underline',
+        textDecorationColor: theme.palette.primary.main
       },
       color: 'inherit',
       marginLeft: 'auto'

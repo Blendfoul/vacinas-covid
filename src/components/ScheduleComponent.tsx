@@ -13,9 +13,11 @@ import {
   Typography
 } from "@material-ui/core";
 import BreadCrumbs from "./BreadCrumbs";
-import {MuiPickersUtilsProvider, KeyboardDatePicker} from "@material-ui/pickers";
+import {KeyboardDatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import {Check} from "@material-ui/icons";
+import CovidContext from "../store/CovidContext";
+import {playSound} from "../hooks/soundHook";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -93,39 +95,49 @@ const ScheduleComponent: React.FC<any> = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <FormControl className={classes.inputs}>
-                <Grid container direction={'row'} justify={'center'} alignItems={'center'} spacing={2} className={classes.inputs}>
-                  <Grid item xs={12} sm className={classes.inputs}>
-                    <TextField label={'Número de Utente'} type={'number'} className={classes.inputs} />
-                  </Grid>
-                  <Grid item xs={12} sm className={classes.inputs}>
-                    <TextField label={'Nome Completo'} className={classes.inputs}/>
-                  </Grid>
-                  <Grid item xs={12} sm className={classes.inputs}>
-                    <KeyboardDatePicker
-                      margin="normal"
-                      id="date-picker-dialog"
-                      label="Data de Nascimento"
-                      format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      error={error}
-                      style={{marginBlock: 0}}
-                      KeyboardButtonProps={{
-                        'aria-label': 'alterar data',
-                      }}
-                      className={classes.inputs}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} className={classes.inputs}>
-                    <Button type={'submit'} color={'secondary'}
-                            variant={'contained'} title={'Validar'} className={classes.inputs} onClick={handleButtonClick}>
-                      <Typography variant={'body1'} className={classes.text}>Validar</Typography>
-                      <Check className={classes.text}/>
-                    </Button>
-                  </Grid>
-                </Grid>
-              </FormControl>
+              <CovidContext.Consumer>
+                {
+                  ({enabled}) => (
+                    <FormControl className={classes.inputs}>
+                      <Grid container direction={'row'} justify={'center'} alignItems={'center'} spacing={2} className={classes.inputs}>
+                        <Grid item xs={12} sm className={classes.inputs}>
+                          <TextField label={'Número de Utente'} type={'number'} className={classes.inputs}
+                                     onMouseEnter={() => enabled ? playSound('/sounds/numeroUtente.mp3'): null}/>
+                        </Grid>
+                        <Grid item xs={12} sm className={classes.inputs}>
+                          <TextField label={'Nome Completo'} className={classes.inputs}
+                                     onMouseEnter={() => enabled ? playSound('/sounds/nome.mp3'): null}/>
+                        </Grid>
+                        <Grid item xs={12} sm className={classes.inputs}>
+                          <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Data de Nascimento"
+                            format="MM/dd/yyyy"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            error={error}
+                            style={{marginBlock: 0}}
+                            KeyboardButtonProps={{
+                              'aria-label': 'alterar data',
+                            }}
+                            className={classes.inputs}
+                            onMouseEnter={() => enabled ? playSound('/sounds/nascimento.mp3'): null}
+                          />
+                        </Grid>
+                        <Grid item xs={12} sm={12} className={classes.inputs}
+                              onMouseEnter={() => enabled ? playSound('/sounds/validar.mp3'): null}>
+                          <Button type={'submit'} color={'secondary'}
+                                  variant={'contained'} title={'Validar'} className={classes.inputs} onClick={handleButtonClick}>
+                            <Typography variant={'body1'} className={classes.text}>Validar</Typography>
+                            <Check className={classes.text}/>
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </FormControl>
+                  )
+                }
+              </CovidContext.Consumer>
             </Box>
           </Paper>
         </Box>

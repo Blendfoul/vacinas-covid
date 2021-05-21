@@ -29,6 +29,12 @@
       "icon": "info",
       "route": "/info",
       "audio": "/sounds/info.mp3"
+    },
+    {
+      "name": "Contactos",
+      "icon": "contacts",
+      "route": "/contactos",
+      "audio": "/sounds/contactos.mp3"
     }
   ],
   "vaccines": [
@@ -187,7 +193,8 @@
             "Incapacidade de movimento ou fala"
           ]
         }
-      ]
+      ],
+      "sound": "/sounds/sintomas.mp3"
     },
     {
       "name": "Prevenção",
@@ -204,7 +211,22 @@
             "Se tiver algum sintoma, pedir ajuda médica."
           ]
         }
-      ]
+      ],
+      "sound": "/sounds/prevencao.mp3"
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Saude 24",
+      "contact": "+351 808 24 24 24"
+    },
+    {
+      "name": "DGS",
+      "contact": "belele"
+    },
+    {
+      "name": "INEM",
+      "contact": "112"
     }
   ]
 }

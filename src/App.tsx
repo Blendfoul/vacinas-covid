@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
 import MenuBar from "./components/MenuBar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from "./components/Home";
 import Vaccines from "./components/Vaccines";
 import VaccineExtended from "./components/VaccineExtended";
@@ -13,6 +9,7 @@ import InfoComponent from "./components/InfoComponent";
 import Stats from "./components/Stats";
 import ScheduleComponent from "./components/ScheduleComponent";
 import CovidContext from "./store/CovidContext";
+import ContactsComponent from "./components/ContactsComponent";
 
 const App: React.FC<any> = () => {
   const [enabled, setEnabled] = useState(true);
@@ -40,6 +37,9 @@ const App: React.FC<any> = () => {
             </Route>
             <Route path="/info">
               <InfoComponent />
+            </Route>
+            <Route path="/contactos">
+              <ContactsComponent />
             </Route>
           </Switch>
         </div>

@@ -1,28 +1,42 @@
 import React from "react";
 import {Statistics} from "../types/Statistics";
-import {Grid} from "@material-ui/core";
+import {Box, Grid} from "@material-ui/core";
 import Item from "./Item";
+import useAxios from "../hooks/useAxios";
 
 interface CovidDataProps {
-  data: Statistics;
+  data: string;
 }
 
 const CovidData: React.FC<CovidDataProps> = ({data}) => {
+  const {response} = useAxios(`https://covid19-api.vost.pt/Requests/get_last_update_specific_county/${data}`, {}, [data]);
+
   return (
     <React.Fragment>
-      <Grid container direction={'row'}>
-        <Item xs={6} sm={12} primary={'Data'} secondary={data.data} />
-        <Item xs={6} sm primary={'Área'} secondary={`${data.area}m`} />
-        <Item xs={6} sm primary={'Distrito'} secondary={data.distrito} />
-        <Item xs={6} sm primary={'Concelho'} secondary={data.concelho} />
-        <Item xs={6} sm primary={'População'} secondary={data.population} />
-      </Grid>
-      <Grid container direction={'row'}>
-        <Item xs={4} sm primary={'Casos Átivos'} secondary={data.casos_14dias} />
-        <Item xs={4} sm primary={'Incidência'} secondary={data.incidencia} />
-        <Item xs={4} sm primary={'Densidade Populacional'} secondary={data.densidade_populacional} />
-        <Item xs={4} sm primary={'Risco'} secondary={data.incidencia_risco} />
-      </Grid>
+      <Box p={2}>
+        {
+          response && (() => {
+            const stats: Statistics = response.data[0];
+             return (
+               <>
+                 <Grid container direction={'row'}>
+                   <Item xs={6} sm={12} primary={'Data'} secondary={stats.data}/>
+                   <Item xs={6} sm primary={'Área'} secondary={`${stats.area}m`}/>
+                   <Item xs={6} sm primary={'Distrito'} secondary={stats.distrito}/>
+                   <Item xs={6} sm primary={'Concelho'} secondary={stats.concelho}/>
+                   <Item xs={6} sm primary={'População'} secondary={stats.population}/>
+                 </Grid>
+                 <Grid container direction={'row'}>
+                   <Item xs={4} sm primary={'Casos Átivos'} secondary={stats.casos_14dias}/>
+                   <Item xs={4} sm primary={'Incidência'} secondary={stats.incidencia}/>
+                   <Item xs={4} sm primary={'Densidade Populacional'} secondary={stats.densidade_populacional}/>
+                   <Item xs={4} sm primary={'Risco'} secondary={stats.incidencia_risco}/>
+                 </Grid>
+               </>
+             );
+          })
+        }
+      </Box>
     </React.Fragment>
   );
 };

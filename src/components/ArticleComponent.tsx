@@ -17,7 +17,7 @@ interface ArticleProps {
   data: Article;
 }
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       marginTop: 15,
@@ -37,7 +37,8 @@ const useStyles = makeStyles(() =>
       textEmphasis: undefined,
       textDecoration: 'none',
       "&:hover": {
-        textDecoration: 'underline'
+        textDecoration: 'underline',
+        textDecorationColor: theme.palette.primary.main
       },
       color: 'inherit',
       marginLeft: 'auto'
@@ -52,7 +53,7 @@ const ArticleComponent: React.FC<ArticleProps> = ({data}) => {
 
   return (
     <Grid item xs={12} sm={6}>
-      <Card variant="outlined" className={classes.root} elevation={3}>
+      <Card elevation={3} className={classes.root}>
         <div className={classes.container}>
           <CardMedia
             className={classes.media}

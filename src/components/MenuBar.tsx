@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {AppBar, createStyles, Divider, Drawer, IconButton, makeStyles, Toolbar, Typography} from "@material-ui/core";
+import {AppBar, createStyles, Divider, Drawer, IconButton, makeStyles, Toolbar} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import DrawerContent from "./DrawerContent";
 import CovidContext from "../store/CovidContext";
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) =>
       display: 'flex',
       alignItems: 'center',
       flexDirection: 'row',
+      height: 70,
       backgroundColor: theme.palette.primary.dark
     }
   }));

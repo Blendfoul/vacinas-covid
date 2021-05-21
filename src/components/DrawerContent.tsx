@@ -6,7 +6,7 @@ import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import HomeIcon from '@material-ui/icons/Home';
 import InfoIcon from '@material-ui/icons/Info';
 import * as content from '../assets/content.json';
-import {CalendarToday} from "@material-ui/icons";
+import {CalendarToday, Contacts} from "@material-ui/icons";
 import CovidContext from "../store/CovidContext";
 import {playSound} from "../hooks/soundHook";
 
@@ -50,6 +50,8 @@ const DrawerContent: React.FC<any> = () => {
         return <InfoIcon/>;
       case 'calendar':
         return <CalendarToday />;
+      case 'contacts':
+        return <Contacts />
       default:
         return null;
     }
