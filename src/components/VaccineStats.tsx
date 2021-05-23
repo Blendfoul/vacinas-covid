@@ -3,9 +3,20 @@ import {Box, Paper} from "@material-ui/core";
 import useAxios from "../hooks/useAxios";
 import Chart from "react-apexcharts";
 import {ApexOptions} from "apexcharts";
+import ErrorPage from "./ErrorPage";
+import LoadingPage from "./LoadingPage";
 
 const VaccineStats: React.FC<any> = () => {
-  const {response} = useAxios('https://covid.ourworldindata.org/data/owid-covid-data.json');
+  const {response, loading, error} = useAxios('https://covid.ourworldindata.org/data/owid-covid-data.json');
+
+  if (loading) {
+    return <LoadingPage />;
+  }
+
+  if (error) {
+    return <ErrorPage error={error}/>
+  }
+
 
   return (
     <Box m={2}>

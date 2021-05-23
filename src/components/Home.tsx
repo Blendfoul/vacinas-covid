@@ -5,9 +5,11 @@ import {AxiosRequestConfig} from "axios";
 import {Article} from "../types/News";
 import ArticleComponent from './ArticleComponent';
 import useAxios from "../hooks/useAxios";
+import LoadingPage from "./LoadingPage";
+import ErrorPage from "./ErrorPage";
 
 const Home: React.FC<any> = () => {
-  const {response} = useAxios('https://newsapi.org/v2/top-headlines', {
+  const {response, loading, error} = useAxios('https://newsapi.org/v2/top-headlines', {
     headers: {
       'X-Api-Key': '7cba5fb16ae8462c90e6b576440f72c3'
     },
@@ -17,6 +19,14 @@ const Home: React.FC<any> = () => {
     },
     method: 'get'
   } as AxiosRequestConfig);
+
+  if(loading) {
+    return <LoadingPage />;
+  }
+
+  if(error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <Container>

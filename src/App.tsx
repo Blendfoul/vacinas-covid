@@ -10,6 +10,7 @@ import Stats from "./components/Stats";
 import ScheduleComponent from "./components/ScheduleComponent";
 import CovidContext from "./store/CovidContext";
 import ContactsComponent from "./components/ContactsComponent";
+import ErrorPage from "./components/ErrorPage";
 
 const App: React.FC<any> = () => {
   const [enabled, setEnabled] = useState(true);
@@ -40,6 +41,9 @@ const App: React.FC<any> = () => {
             </Route>
             <Route path="/contactos">
               <ContactsComponent />
+            </Route>
+            <Route path="*">
+              <ErrorPage error={{message: ''}} type={'not-found'}/>
             </Route>
           </Switch>
         </div>
