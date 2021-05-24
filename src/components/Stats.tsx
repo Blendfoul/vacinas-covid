@@ -40,7 +40,7 @@ const Stats: React.FC<any> = () => {
     <Container>
       <Grid container>
         <Grid item xs={12}>
-          <BreadCrumbs primary={"Estatisticas"} secondary={[{name: 'Página Inicial', route: ''}]}/>
+          <BreadCrumbs primary={"Estatisticas"} secondary={[{name: 'Vacinas covid', route: ''}]}/>
         </Grid>
         <Grid item xs={12}>
           <Box m={2}>

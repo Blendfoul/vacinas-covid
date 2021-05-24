@@ -76,7 +76,7 @@ const VaccineExtended: React.FC<any> = () => {
 
   return data ? (
       <Container maxWidth={'md'}>
-        <BreadCrumbs primary={name} secondary={[{name: 'Página Inicial', route: ''}, {name: 'Vacinas', route: 'vacinas'}]} />
+        <BreadCrumbs primary={name} secondary={[{name: 'Vacinas covid', route: ''}, {name: 'Vacinas', route: 'vacinas'}]} />
         <Box py={2}>
           <Paper elevation={3}>
             <Box p={3}>

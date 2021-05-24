@@ -10,11 +10,22 @@ interface CovidDataProps {
   data: string;
 }
 
+declare global {
+  interface String {
+    capitalize(): string;
+  }
+}
+
+String.prototype.capitalize = function() {
+  let s = String(this);
+  return s[0].toUpperCase() + s.slice(1);
+}
+
 const CovidData: React.FC<CovidDataProps> = ({data}) => {
   const {response, loading, error} = useAxios(`https://covid19-api.vost.pt/Requests/get_last_update_specific_county/${data}`, {}, [data]);
 
   if(loading) {
-    return <LoadingPage />;
+    return <LoadingPage data={`A visitar ${data.toLocaleLowerCase('PT').capitalize()}!`} />;
   }
 
   if(error) {

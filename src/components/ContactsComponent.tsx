@@ -16,7 +16,7 @@ const ContactComponent: React.FC<any> = () => {
 
   return (
   <Container className={classes.container}>
-    <BreadCrumbs primary={'Contactos'} secondary={[{name: 'Página Inicial', route: ''}]}/>
+    <BreadCrumbs primary={'Contactos'} secondary={[{name: 'Vacinas covid', route: ''}]}/>
     <Box px={2}>
       <Grid container justify={'center'} alignItems={'center'} className={classes.container}>
         <Grid item xs={12} sm>

@@ -63,7 +63,7 @@ const ScheduleComponent: React.FC<any> = () => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Container>
-        <BreadCrumbs primary={"Marcação"} secondary={[{name: 'Página Inicial', route: ''}]}/>
+        <BreadCrumbs primary={"Marcação"} secondary={[{name: 'Vacinas covid', route: ''}]}/>
         <Box p={1}>
           <Paper elevation={3}>
             <Box py={2} px={4}>
