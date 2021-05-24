@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import {AppBar, createStyles, Divider, Drawer, IconButton, makeStyles, Toolbar} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import DrawerContent from "./DrawerContent";
-import CovidContext from "../store/CovidContext";
-import {playSound} from "../hooks/soundHook";
+import CovidContext from "../../store/CovidContext";
+import {useSound} from "../../hooks/soundHook";
 import {VolumeOff, VolumeUp} from "@material-ui/icons";
 import {NavLink} from "react-router-dom";
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -43,6 +43,8 @@ const useStyles = makeStyles((theme) =>
 const MenuBar: React.FC<any> = () => {
   const classes = useStyles();
   const [open, setOpen]: [boolean, React.Dispatch<React.SetStateAction<boolean>>] = useState(false as boolean);
+  const {sound} = useSound('/sounds/menu.mp3');
+
 
   const toggleDrawer = () => setOpen(open => !open);
 
@@ -56,7 +58,8 @@ const MenuBar: React.FC<any> = () => {
                 <>
                   <IconButton edge="start" color="inherit"
                               aria-label="menu" onClick={toggleDrawer}
-                              onMouseEnter={() => enabled ? playSound('/sounds/menu.mp3') : null}>
+                              onMouseEnter={() => enabled ? sound?.play() : null}
+                              onMouseLeave={() => enabled ? sound?.pause() : null}>
                     <MenuIcon/>
                   </IconButton>
                   <NavLink to={'/'} className={classes.link}>

@@ -1,14 +1,14 @@
 import React from "react";
 import {Box, Container, Grid, Paper,} from "@material-ui/core";
 import CovidData from "./CovidData";
-import BreadCrumbs from "./BreadCrumbs";
-import useAxios from "../hooks/useAxios";
+import BreadCrumbs from "../utils/BreadCrumbs";
+import useAxios from "../../hooks/useAxios";
 import VaccineStats from "./VaccineStats";
 import VaccineDataStats from "./VaccineDataStats";
-import LoadingPage from "./LoadingPage";
-import ErrorPage from "./ErrorPage";
+import LoadingPage from "../utils/LoadingPage";
+import ErrorPage from "../utils/ErrorPage";
 import RegionInput from "./RegionInput";
-import CovidContext from "../store/CovidContext";
+import CovidContext from "../../store/CovidContext";
 
 const VaccineContainer: React.FC<any> = () => {
   const {response, loading, error} = useAxios('https://covid.ourworldindata.org/data/owid-covid-data.json');

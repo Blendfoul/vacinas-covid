@@ -1,9 +1,9 @@
 import React from "react";
 import {createStyles, FormControl, Grid, InputLabel, makeStyles, MenuItem, Select, Typography} from "@material-ui/core";
-import useAxios from "../hooks/useAxios";
-import LoadingPage from "./LoadingPage";
-import ErrorPage from "./ErrorPage";
-import CovidContext from "../store/CovidContext";
+import useAxios from "../../hooks/useAxios";
+import LoadingPage from "../utils/LoadingPage";
+import ErrorPage from "../utils/ErrorPage";
+import CovidContext from "../../store/CovidContext";
 
 const useStyles = makeStyles(theme => createStyles({
   formControl: {

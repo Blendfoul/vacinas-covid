@@ -1,5 +1,5 @@
 import React from "react";
-import {Info} from "../types/Info";
+import {Info} from "../../types/Info";
 import {
   Accordion,
   AccordionDetails,
@@ -14,8 +14,8 @@ import {
   Typography
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {playSound} from "../hooks/soundHook";
-import CovidContext from "../store/CovidContext";
+import {useSound} from "../../hooks/soundHook";
+import CovidContext from "../../store/CovidContext";
 
 interface InfoItemProps {
   data: Info;
@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) =>
 
 const InfoItem: React.FC<InfoItemProps> = ({data}) => {
   const classes = useStyles();
+  const {sound} = useSound(data.sound)
 
   return (
     <CovidContext.Consumer>
@@ -45,10 +46,12 @@ const InfoItem: React.FC<InfoItemProps> = ({data}) => {
         ({enabled}) => (
           <Accordion className={classes.root}>
             <AccordionSummary
-              onMouseEnter={() => enabled ? playSound(data.sound) : null}
               expandIcon={<ExpandMoreIcon color={'secondary'}/>}
               aria-label="Expand"
-            >
+              onMouseEnter={() => enabled ? sound?.play() : null}
+              onMouseLeave={() => enabled ? () => {
+                sound?.pause();
+                sound!.currentTime = 0; } : null}>
               <Typography variant={"h5"} color={'secondary'}>{data.name}</Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.content}>

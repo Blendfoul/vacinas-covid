@@ -1,7 +1,7 @@
 import React from "react";
 import {Box, Grid, Paper, Typography} from "@material-ui/core";
-import {VaccineStats} from "../types/Statistics";
-import Item from "./Item";
+import {VaccineStats} from "../../types/Statistics";
+import Item from "../utils/Item";
 
 interface VaccineDataStatsProps {
   response: any;

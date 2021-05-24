@@ -1,12 +1,12 @@
 import React from 'react';
 import {Box, Container, Grid} from "@material-ui/core";
-import BreadCrumbs from "./BreadCrumbs";
+import BreadCrumbs from "../utils/BreadCrumbs";
 import {AxiosRequestConfig} from "axios";
-import {Article} from "../types/News";
+import {Article} from "../../types/News";
 import ArticleComponent from './ArticleComponent';
-import useAxios from "../hooks/useAxios";
-import LoadingPage from "./LoadingPage";
-import ErrorPage from "./ErrorPage";
+import useAxios from "../../hooks/useAxios";
+import LoadingPage from "../utils/LoadingPage";
+import ErrorPage from "../utils/ErrorPage";
 
 const Home: React.FC<any> = () => {
   const {response, loading, error} = useAxios('https://newsapi.org/v2/top-headlines/', {

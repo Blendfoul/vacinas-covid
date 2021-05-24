@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import MenuBar from "./components/MenuBar";
+import MenuBar from "./components/menu/MenuBar";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from "./components/Home";
-import Vaccines from "./components/Vaccines";
-import VaccineExtended from "./components/VaccineExtended";
-import Footer from "./components/Footer";
-import InfoComponent from "./components/InfoComponent";
-import Stats from "./components/Stats";
-import ScheduleComponent from "./components/ScheduleComponent";
+import Home from "./components/news/Home";
+import Vaccines from "./components/vaccines/Vaccines";
+import VaccineExtended from "./components/vaccines/VaccineExtended";
+import Footer from "./components/utils/Footer";
+import InfoComponent from "./components/info/InfoComponent";
+import Stats from "./components/stats/Stats";
+import ScheduleComponent from "./components/schedule/ScheduleComponent";
 import CovidContext from "./store/CovidContext";
-import ContactsComponent from "./components/ContactsComponent";
-import ErrorPage from "./components/ErrorPage";
+import ContactsComponent from "./components/contacts/ContactsComponent";
+import ErrorPage from "./components/utils/ErrorPage";
 
 const App: React.FC<any> = () => {
   const [enabled, setEnabled] = useState(true);

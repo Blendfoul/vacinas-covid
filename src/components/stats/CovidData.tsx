@@ -1,10 +1,10 @@
 import React from "react";
-import {Statistics} from "../types/Statistics";
+import {Statistics} from "../../types/Statistics";
 import {Box, Grid} from "@material-ui/core";
-import Item from "./Item";
-import useAxios from "../hooks/useAxios";
-import LoadingPage from "./LoadingPage";
-import ErrorPage from "./ErrorPage";
+import Item from "../utils/Item";
+import useAxios from "../../hooks/useAxios";
+import LoadingPage from "../utils/LoadingPage";
+import ErrorPage from "../utils/ErrorPage";
 
 interface CovidDataProps {
   data: string;

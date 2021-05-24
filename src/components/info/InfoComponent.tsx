@@ -1,8 +1,8 @@
 import React from "react";
 import {Box, Container} from "@material-ui/core";
-import BreadCrumbs from "./BreadCrumbs";
-import {info} from '../assets/content.json';
-import {Info} from "../types/Info";
+import BreadCrumbs from "../utils/BreadCrumbs";
+import {info} from '../../assets/content.json';
+import {Info} from "../../types/Info";
 import InfoItem from "./InfoItem";
 
 const InfoComponent: React.FC<any> = () => {

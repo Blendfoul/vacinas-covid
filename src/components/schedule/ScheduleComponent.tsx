@@ -12,12 +12,13 @@ import {
   TextField,
   Typography
 } from "@material-ui/core";
-import BreadCrumbs from "./BreadCrumbs";
+import BreadCrumbs from "../utils/BreadCrumbs";
 import {KeyboardDatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import {Check} from "@material-ui/icons";
-import CovidContext from "../store/CovidContext";
-import {playSound} from "../hooks/soundHook";
+import CovidContext from "../../store/CovidContext";
+import {playSound} from "../../hooks/soundHook";
+import TextItem from "../utils/TextItem";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -69,30 +70,30 @@ const ScheduleComponent: React.FC<any> = () => {
             <Box py={2} px={4}>
               <Grid container direction={'row'} justify={'center'}>
                 <Grid item xs={12}>
-                  <Typography variant={'h5'} className={classes.content}>
+                  <TextItem variant={'h5'} className={classes.content} soundPath={'/sounds/marcacao-01.mp3'}>
                     <b>Tem 55 ou mais anos e ainda não foi vacinado(a)?</b>
-                  </Typography>
-                  <Typography variant={'body1'} className={classes.content}>
+                  </TextItem>
+                  <TextItem variant={'body1'} className={classes.content} soundPath={'/sounds/marcacao-02.mp3'}>
                     Este formulário destina-se apenas ao pedido de agendamento da 1ª inoculação da vacina contra a COVID-19. Se já foi vacinado(a), contraiu a infeção por COVID-19 ou tem agendamento anterior, o seu pedido não será considerado.
-                  </Typography>
+                  </TextItem>
                 </Grid>
                 <Grid item xs={12} sm className={classes.container}>
                   <img src="/pedido.svg" alt="" className={classes.svg}/>
-                  <Typography variant={'body1'} className={classes.content}>
+                  <TextItem variant={'body1'} className={classes.content} soundPath={'/sounds/marcacao-03.mp3'}>
                     1. Selecione o <b>local e a data para vacinação mais conveniente</b> para si.
-                  </Typography>
+                  </TextItem>
                 </Grid>
                 <Grid item xs={12} sm className={classes.container}>
                   <img src="/pedido-01.svg" alt="" className={classes.svg}/>
-                  <Typography variant={'body1'} className={classes.content}>
+                  <TextItem variant={'body1'} className={classes.content} soundPath={'/sounds/marcacao-04.mp3'}>
                     2. Será contactado por <b>SMS pelo número 2424</b> com mais indicações.
-                  </Typography>
+                  </TextItem>
                 </Grid>
                 <Grid item xs={12} sm className={classes.container}>
                   <img src="/pedido-02.svg" alt="" className={classes.svg}/>
-                  <Typography variant={'body1'} className={classes.content}>
+                  <TextItem variant={'body1'} className={classes.content} soundPath={'/sounds/marcacao-05.mp3'}>
                     3. No dia agendado, <b>desloque-se até ao local de vacinação escolhido, na hora indicada</b>.
-                  </Typography>
+                  </TextItem>
                 </Grid>
               </Grid>
               <CovidContext.Consumer>

@@ -1,9 +1,9 @@
 import React from "react";
-import {VaccineProps} from "../types/vaccine";
+import {VaccineProps} from "../../types/vaccine";
 import {Card, CardActionArea, CardContent, CardMedia, createStyles, makeStyles, Typography} from "@material-ui/core";
 import {Link, useRouteMatch} from 'react-router-dom';
-import CovidContext from "../store/CovidContext";
-import {playSound} from "../hooks/soundHook";
+import CovidContext from "../../store/CovidContext";
+import {useSound} from "../../hooks/soundHook";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -36,13 +36,24 @@ const useStyles = makeStyles((theme) =>
 const Vaccine: React.FC<VaccineProps> = ({data}) => {
   const classes = useStyles();
   const match = useRouteMatch();
+  const {sound} = useSound(data.audio);
+
+  function stopSound() {
+    sound!.pause();
+    sound!.currentTime = 0;
+  }
+
+  function startSound() {
+    sound!.play();
+  }
 
   return (
     <CovidContext.Consumer>
       {
         ({enabled}) => (
           <Card variant="elevation" className={classes.root} elevation={3}
-                onMouseEnter={() => enabled ? playSound(data.audio) : null}>
+                onMouseEnter={() => enabled ? startSound() : null}
+                onMouseLeave={() => enabled ? stopSound() : null}>
 
             <Link to={`${match.path}/${data.name}`} className={classes.link}>
               <CardActionArea>

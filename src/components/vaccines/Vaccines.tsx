@@ -1,6 +1,6 @@
 import React from "react";
 import {Box, Breadcrumbs, Container, createStyles, Grid, makeStyles, Typography} from "@material-ui/core";
-import {vaccines} from '../assets/content.json';
+import {vaccines} from '../../assets/content.json';
 import {Link} from 'react-router-dom';
 import Vaccine from "./Vaccine";
 

@@ -1,9 +1,9 @@
 import React from "react";
 import {Box, Container, createStyles, Grid, makeStyles} from "@material-ui/core";
-import BreadCrumbs from "./BreadCrumbs";
-import {contacts} from '../assets/content.json';
+import BreadCrumbs from "../utils/BreadCrumbs";
+import {contacts} from '../../assets/content.json';
 import ContactItem from "./ContactItem";
-import {Contact} from "../types/Contact";
+import {Contact} from "../../types/Contact";
 
 const useStyles = makeStyles(() => createStyles({
   container: {

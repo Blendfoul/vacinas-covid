@@ -17,12 +17,12 @@ import {
   Typography,
   withWidth
 } from "@material-ui/core";
-import {Vaccine} from "../types/vaccine";
-import {vaccines} from '../assets/content.json';
+import {Vaccine} from "../../types/vaccine";
+import {vaccines} from '../../assets/content.json';
 import TabPanel from "./TabPanel";
 import {ArrowBack} from "@material-ui/icons";
-import Item from "./Item";
-import BreadCrumbs from "./BreadCrumbs";
+import Item from "../utils/Item";
+import BreadCrumbs from "../utils/BreadCrumbs";
 
 const useStyles = makeStyles(() =>
   createStyles({

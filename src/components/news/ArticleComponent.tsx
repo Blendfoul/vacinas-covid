@@ -1,5 +1,5 @@
 import React from "react";
-import {Article} from "../types/News";
+import {Article} from "../../types/News";
 import {
   Card,
   CardActions,
