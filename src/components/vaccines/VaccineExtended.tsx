@@ -23,6 +23,7 @@ import {ArrowBack} from "@material-ui/icons";
 import Item from "../utils/Item";
 import BreadCrumbs from "../utils/BreadCrumbs";
 import TextItem from "../utils/TextItem";
+import SummaryItem from "./SummaryItem";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -43,9 +44,6 @@ const useStyles = makeStyles(() =>
       },
       color: 'inherit',
       marginLeft: 'auto'
-    },
-    text: {
-      textAlign: 'justify'
     },
     paper: {
       display: 'flex',
@@ -163,9 +161,7 @@ const VaccineExtended: React.FC<any> = () => {
                       <List>
                         {
                           data.summary.map((item, index) => (
-                            <ListItem key={`sum-${index}`}>
-                              <ListItemText primary={item} className={classes.text}/>
-                            </ListItem>
+                            <SummaryItem text={item.text} soundPath={item.sound} key={`sum-${index}`}/>
                           ))
                         }
                       </List>
