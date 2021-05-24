@@ -14,7 +14,6 @@ import {
   Paper,
   Tab,
   Tabs,
-  Typography,
   withWidth
 } from "@material-ui/core";
 import {Vaccine} from "../../types/vaccine";
@@ -23,6 +22,7 @@ import TabPanel from "./TabPanel";
 import {ArrowBack} from "@material-ui/icons";
 import Item from "../utils/Item";
 import BreadCrumbs from "../utils/BreadCrumbs";
+import TextItem from "../utils/TextItem";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -81,7 +81,7 @@ const VaccineExtended: React.FC<any> = () => {
           <Paper elevation={3}>
             <Box p={3}>
               <Button color="inherit" onClick={backToVaccines} startIcon={<ArrowBack color={'primary'}/>}>
-                <Typography variant={'caption'} color={'primary'}>Voltar</Typography>
+                <TextItem variant={'caption'} color={'primary'} soundPath={'/sounds/voltar.mp3'}>Voltar</TextItem>
               </Button>
               <Grid container spacing={2} direction="row" justify={'center'} alignItems={'center'}>
                 <Box px={1} py={3}>

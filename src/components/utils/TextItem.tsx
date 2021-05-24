@@ -8,6 +8,7 @@ interface TextItemProps {
   soundPath: string;
   variant?: "inherit" | Variant | undefined;
   className?: string | undefined;
+  color?: "inherit" | "initial" | "primary" | "secondary" | "textPrimary" | "textSecondary";
 }
 
 const TextItem: React.FC<TextItemProps> = ({children, soundPath, ...other}) => {

@@ -30,8 +30,11 @@ declare global {
   }
 }
 
+
+
 Audio.prototype.reset = function() {
   const audio = new Audio(this);
+  audio.pause();
   audio.currentTime = 0;
 }
 

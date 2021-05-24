@@ -37,6 +37,15 @@ const ContactItem: React.FC<ContactItemProps> = ({data}) => {
   const classes = useStyles();
   const {sound, error, loading} = useSound(data.sound);
 
+  function stopSound() {
+    sound!.pause();
+    sound!.currentTime = 0;
+  }
+
+  function startSound() {
+    sound!.play();
+  }
+
   if (loading) {
     return <LoadingPage />
   }
@@ -45,16 +54,16 @@ const ContactItem: React.FC<ContactItemProps> = ({data}) => {
     return <ErrorPage error={error} />
   }
 
+
+
   return (
     <Grid item xs={12} sm className={classes.container}>
       <CovidContext.Consumer>
         {
           ({enabled}) => (
             <Paper elevation={3} className={classes.containerPadding}
-                   onMouseEnter={() => enabled ? sound?.play() : null}
-                   onMouseLeave={() => enabled ? () => {
-                     sound?.pause();
-                     sound!.currentTime = 0; } : null}>
+                   onMouseEnter={() => enabled ? startSound() : null}
+                   onMouseLeave={() => enabled ? stopSound() : null}>
               <img src={data.img} alt={data.name} className={classes.image} />
               <Typography variant={'h5'} color={'secondary'}><b>{data.name}</b></Typography>
               <Link href={`tel:${data.contact}`}>{data.contact}</Link>

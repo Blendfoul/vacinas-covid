@@ -40,6 +40,15 @@ const InfoItem: React.FC<InfoItemProps> = ({data}) => {
   const classes = useStyles();
   const {sound} = useSound(data.sound)
 
+  function stopSound() {
+    sound!.pause();
+    sound!.currentTime = 0;
+  }
+
+  function startSound() {
+    sound!.play();
+  }
+
   return (
     <CovidContext.Consumer>
       {
@@ -48,10 +57,8 @@ const InfoItem: React.FC<InfoItemProps> = ({data}) => {
             <AccordionSummary
               expandIcon={<ExpandMoreIcon color={'secondary'}/>}
               aria-label="Expand"
-              onMouseEnter={() => enabled ? sound?.play() : null}
-              onMouseLeave={() => enabled ? () => {
-                sound?.pause();
-                sound!.currentTime = 0; } : null}>
+              onMouseEnter={() => enabled ? startSound() : null}
+              onMouseLeave={() => enabled ? stopSound(): null}>
               <Typography variant={"h5"} color={'secondary'}>{data.name}</Typography>
             </AccordionSummary>
             <AccordionDetails className={classes.content}>
