@@ -1,20 +1,32 @@
 import React from "react";
-import {CircularProgress, createStyles, makeStyles} from "@material-ui/core";
+import {createStyles, LinearProgress, makeStyles, Typography} from "@material-ui/core";
 
 const useStyles = makeStyles(() => createStyles({
   container: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'column',
     height: '70vh'
+  },
+  progress: {
+    width: 150,
+    height: 10,
+    borderRadius: 5
   }
 }));
 
-const LoadingPage: React.FC<any> = () => {
+interface LoadingProps {
+  data?: string;
+}
+
+const LoadingPage: React.FC<LoadingProps> = ({data = ''}) => {
   const classes = useStyles();
   return(
     <div className={classes.container}>
-      <CircularProgress color={'secondary'} size={50}/>
+      <img src="/ico.png" alt="" />
+      <LinearProgress color={'secondary'} variant={'indeterminate'} className={classes.progress}/>
+      <Typography color={'secondary'} variant={'caption'}><b>{data}</b></Typography>
     </div>
   );
 };

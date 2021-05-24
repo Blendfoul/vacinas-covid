@@ -1,28 +1,34 @@
 import React from "react";
-import {Box, Container, Grid, Paper} from "@material-ui/core";
+import {Box, Container, createStyles, Grid, makeStyles} from "@material-ui/core";
 import BreadCrumbs from "./BreadCrumbs";
 import {contacts} from '../assets/content.json';
 import ContactItem from "./ContactItem";
 import {Contact} from "../types/Contact";
 
+const useStyles = makeStyles(() => createStyles({
+  container: {
+    height: '100%'
+  }
+}));
+
 const ContactComponent: React.FC<any> = () => {
+  const classes = useStyles();
+
   return (
-    <Container>
-      <BreadCrumbs primary={'Contactos'} secondary={[{name: 'Página Inicial', route: ''}]}/>
-      <Paper elevation={3}>
-        <Box px={2}>
-          <Grid container>
-            <Grid item xs={12} sm={4}>
-              <Grid container direction={'column'}>
-                {
-                  contacts.map((contact: Contact) => <ContactItem data={contact} key={`contact-${contact.name}`}/>)
-                }
-              </Grid>
-            </Grid>
+  <Container className={classes.container}>
+    <BreadCrumbs primary={'Contactos'} secondary={[{name: 'Página Inicial', route: ''}]}/>
+    <Box px={2}>
+      <Grid container justify={'center'} alignItems={'center'} className={classes.container}>
+        <Grid item xs={12} sm>
+          <Grid container justify={'center'} alignItems={'center'} spacing={1}>
+            {
+              contacts.map((contact: Contact) => <ContactItem data={contact} key={`contact-${contact.name}`}/>)
+            }
           </Grid>
-        </Box>
-      </Paper>
-    </Container>
+        </Grid>
+      </Grid>
+    </Box>
+  </Container>
   )
 };
 

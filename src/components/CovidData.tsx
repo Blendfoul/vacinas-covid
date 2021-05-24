@@ -3,13 +3,23 @@ import {Statistics} from "../types/Statistics";
 import {Box, Grid} from "@material-ui/core";
 import Item from "./Item";
 import useAxios from "../hooks/useAxios";
+import LoadingPage from "./LoadingPage";
+import ErrorPage from "./ErrorPage";
 
 interface CovidDataProps {
   data: string;
 }
 
 const CovidData: React.FC<CovidDataProps> = ({data}) => {
-  const {response} = useAxios(`https://covid19-api.vost.pt/Requests/get_last_update_specific_county/${data}`, {}, [data]);
+  const {response, loading, error} = useAxios(`https://covid19-api.vost.pt/Requests/get_last_update_specific_county/${data}`, {}, [data]);
+
+  if(loading) {
+    return <LoadingPage />;
+  }
+
+  if(error) {
+    return <ErrorPage error={error} />
+  }
 
   return (
     <React.Fragment>

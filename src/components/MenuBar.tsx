@@ -79,7 +79,7 @@ const MenuBar: React.FC<any> = () => {
           <img src={'/logo.png'} alt={'Vacinas Covid'} className={classes.logo}/>
         </div>
         <Divider color={'secondary'}/>
-        <DrawerContent/>
+        <DrawerContent toggle={toggleDrawer}/>
       </Drawer>
     </React.Fragment>
   );

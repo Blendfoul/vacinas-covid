@@ -9,7 +9,7 @@ import LoadingPage from "./LoadingPage";
 import ErrorPage from "./ErrorPage";
 
 const Home: React.FC<any> = () => {
-  const {response, loading, error} = useAxios('https://newsapi.org/v2/top-headlines', {
+  const {response, loading, error} = useAxios('https://newsapi.org/v2/top-headlines/', {
     headers: {
       'X-Api-Key': '7cba5fb16ae8462c90e6b576440f72c3'
     },
@@ -21,7 +21,7 @@ const Home: React.FC<any> = () => {
   } as AxiosRequestConfig);
 
   if(loading) {
-    return <LoadingPage />;
+    return <LoadingPage data={'A ler notícias importantes!'}/>;
   }
 
   if(error) {
@@ -30,7 +30,7 @@ const Home: React.FC<any> = () => {
 
   return (
     <Container>
-      <BreadCrumbs primary={"Página Inicial"} />
+      <BreadCrumbs primary={"Vacinas Covid"} />
       <Box my={2}>
         <Grid container direction={'row'} justify={'center'} spacing={2}>
           {

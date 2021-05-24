@@ -1,6 +1,8 @@
 import React from "react";
 import {Contact} from "../types/Contact";
-import {Box, createStyles, Grid, Link, makeStyles, Typography} from "@material-ui/core";
+import {createStyles, Grid, Link, makeStyles, Paper, Typography} from "@material-ui/core";
+import {playSound} from "../hooks/soundHook";
+import CovidContext from "../store/CovidContext";
 
 interface ContactItemProps {
   data: Contact;
@@ -11,7 +13,20 @@ const useStyles = makeStyles((theme) =>
     container: {
       display: 'flex',
       justifyContent: 'center',
-      flexDirection: 'column'
+      alignItems: 'center',
+      flexDirection: 'column',
+    },
+    containerPadding: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: 250,
+      height: 250
+    },
+    image: {
+      width: 100,
+      resizeMode: 'contain'
     }
   })
 );
@@ -20,14 +35,19 @@ const ContactItem: React.FC<ContactItemProps> = ({data}) => {
   const classes = useStyles();
 
   return (
-    <Box py={2}>
-      <Grid item xs={12} sm>
-        <div className={classes.container}>
-          <Typography variant={'h5'} color={'secondary'}><b>{data.name}</b></Typography>
-          <Link href={`tel:${data.contact}`}>{data.contact}</Link>
-        </div>
-      </Grid>
-    </Box>
+    <Grid item xs={12} sm className={classes.container}>
+      <CovidContext.Consumer>
+        {
+          ({enabled}) => (
+            <Paper elevation={3} className={classes.containerPadding} onMouseEnter={() => enabled ? playSound(data.sound) : null}>
+              <img src={data.img} alt={data.name} className={classes.image} />
+              <Typography variant={'h5'} color={'secondary'}><b>{data.name}</b></Typography>
+              <Link href={`tel:${data.contact}`}>{data.contact}</Link>
+            </Paper>
+          )
+        }
+      </CovidContext.Consumer>
+    </Grid>
   );
 }
 

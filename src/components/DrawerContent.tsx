@@ -3,7 +3,7 @@ import {createStyles, ListItem, ListItemIcon, ListItemText, makeStyles} from "@m
 import {NavLink, useLocation} from 'react-router-dom';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import HomeIcon from '@material-ui/icons/Home';
+import AnnouncementIcon from '@material-ui/icons/Announcement';
 import InfoIcon from '@material-ui/icons/Info';
 import * as content from '../assets/content.json';
 import {CalendarToday, Contacts} from "@material-ui/icons";
@@ -34,7 +34,11 @@ const useStyles = makeStyles((theme) =>
     }
   }));
 
-const DrawerContent: React.FC<any> = () => {
+interface DrawerContentProps {
+  toggle: () => void;
+}
+
+const DrawerContent: React.FC<DrawerContentProps> = ({toggle}) => {
   const classes = useStyles();
   const location = useLocation();
 
@@ -44,8 +48,8 @@ const DrawerContent: React.FC<any> = () => {
         return <PinDropIcon/>;
       case 'trending_up':
         return <TrendingUpIcon/>;
-      case 'home':
-        return <HomeIcon/>;
+      case 'feed':
+        return <AnnouncementIcon/>;
       case 'info':
         return <InfoIcon/>;
       case 'calendar':
@@ -61,7 +65,7 @@ const DrawerContent: React.FC<any> = () => {
     <div className={classes.list}>
       {
         content.list.map((item, index) => (
-          <NavLink to={item.route} className={classes.link} key={`drawer-${index}`}>
+          <NavLink to={item.route} className={classes.link} key={`drawer-${index}`} onClick={toggle}>
             <CovidContext.Consumer>
               {({enabled}) => (
                 <ListItem button selected={item.route === location.pathname}

@@ -14,12 +14,15 @@ import ErrorPage from "./components/ErrorPage";
 
 const App: React.FC<any> = () => {
   const [enabled, setEnabled] = useState(true);
+  const [region, setRegion] = useState('');
+
+  const valueStore = {enabled, setEnabled, region, setRegion};
 
   return (
-    <CovidContext.Provider value={{enabled, setEnabled}}>
+    <CovidContext.Provider value={valueStore}>
       <Router>
         <MenuBar/>
-        <div style={{flex: 1}}>
+        <div style={{flex: 1, height: '100%'}}>
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -47,7 +50,6 @@ const App: React.FC<any> = () => {
             </Route>
           </Switch>
         </div>
-
         <Footer/>
       </Router>
     </CovidContext.Provider>

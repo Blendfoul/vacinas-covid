@@ -1,23 +1,13 @@
 import React from "react";
 import {Box, Paper} from "@material-ui/core";
-import useAxios from "../hooks/useAxios";
 import Chart from "react-apexcharts";
 import {ApexOptions} from "apexcharts";
-import ErrorPage from "./ErrorPage";
-import LoadingPage from "./LoadingPage";
 
-const VaccineStats: React.FC<any> = () => {
-  const {response, loading, error} = useAxios('https://covid.ourworldindata.org/data/owid-covid-data.json');
+interface VaccineStatsProps {
+  response: any;
+}
 
-  if (loading) {
-    return <LoadingPage />;
-  }
-
-  if (error) {
-    return <ErrorPage error={error}/>
-  }
-
-
+const VaccineStats: React.FC<VaccineStatsProps> = ({response}) => {
   return (
     <Box m={2}>
       <Paper elevation={3}>
@@ -31,15 +21,21 @@ const VaccineStats: React.FC<any> = () => {
               }).filter((data: any) => data.vaccinated !== undefined);
 
               const content = [{
-                  name: "Vacinados",
-                  data: vaccinated.map((data: any) => data.vaccinated)
-                }];
+                name: "Vacinados",
+                data: vaccinated.map((data: any) => data.vaccinated)
+              }];
 
               const options: ApexOptions = {
+                chart: {
+                  zoom: {
+                    enabled: false
+                  }
+                },
                 title: {
                   text: 'Total de Vacinados',
                   align: 'left',
                   style: {
+                    fontSize: '20px',
                     color: '#F9AA33',
                     fontWeight: 'bold'
                   }
@@ -49,7 +45,7 @@ const VaccineStats: React.FC<any> = () => {
                 },
                 grid: {
                   row: {
-                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    colors: ['#f3f3f3', 'transparent'],
                     opacity: 0.5
                   },
                 },
@@ -59,14 +55,16 @@ const VaccineStats: React.FC<any> = () => {
               }
 
               return (
-                <Chart options={options} series={content} type={"line"} height={350}/>
+                <Box p={2}>
+                  <Chart options={options} series={content} type={"line"} height={350}/>
+                </Box>
               );
             })
           }
         </Box>
       </Paper>
     </Box>
-  )
+  );
 };
 
 export default VaccineStats;

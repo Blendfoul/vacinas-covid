@@ -1,44 +1,41 @@
-import React, {useState} from "react";
-import {
-  Box,
-  Container,
-  createStyles,
-  Divider,
-  FormControl,
-  Grid,
-  InputLabel,
-  makeStyles,
-  MenuItem,
-  Paper,
-  Select,
-  Theme,
-  Typography,
-} from "@material-ui/core";
+import React from "react";
+import {Box, Container, Grid, Paper,} from "@material-ui/core";
 import CovidData from "./CovidData";
 import BreadCrumbs from "./BreadCrumbs";
 import useAxios from "../hooks/useAxios";
 import VaccineStats from "./VaccineStats";
+import VaccineDataStats from "./VaccineDataStats";
+import LoadingPage from "./LoadingPage";
+import ErrorPage from "./ErrorPage";
+import RegionInput from "./RegionInput";
+import CovidContext from "../store/CovidContext";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 200,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
+const VaccineContainer: React.FC<any> = () => {
+  const {response, loading, error} = useAxios('https://covid.ourworldindata.org/data/owid-covid-data.json');
+
+  if (loading) {
+    return (
+      <Grid item xs={12}>
+        <LoadingPage data={'A calcular doses...'}/>
+      </Grid>
+    );
+  }
+
+  if (error) {
+    return <ErrorPage error={error}/>
+  }
+
+  return <>
+    <Grid item xs={12} sm={6}>
+      <VaccineStats response={response}/>
+    </Grid>
+    <Grid item xs={12} sm={6}>
+      <VaccineDataStats response={response}/>
+    </Grid>
+  </>;
+};
 
 const Stats: React.FC<any> = () => {
-  const classes = useStyles();
-  const [region, setRegion] = useState('');
-  const {response} = useAxios(`https://covid19-api.vost.pt/Requests/get_county_list/`);
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setRegion(event.target.value as string);
-  };
-
   return (
     <Container>
       <Grid container>
@@ -49,35 +46,21 @@ const Stats: React.FC<any> = () => {
           <Box m={2}>
             <Paper elevation={3}>
               <Box p={2}>
-                <Typography variant={'h6'} color={'secondary'}>Estatísticas de concelhos</Typography>
-                <FormControl className={classes.formControl}>
-                  <InputLabel id="region-select-label">Região</InputLabel>
-                  <Select
-                    labelId="region-select-label"
-                    id="region-select"
-                    value={region}
-                    onChange={handleChange}
-                  >
-                    {
-                      response && response.data.map((region: string) => <MenuItem key={`region-${region}`}
-                                                                                  value={region}>{region.toLocaleLowerCase('PT')}</MenuItem>)
-                    }
-                  </Select>
-                </FormControl>
-                <Divider/>
-                {
-                  region && <CovidData data={region}/>
-                }
+                <CovidContext.Consumer>
+                  {
+                    ({region}) => (
+                      <>
+                        <RegionInput />
+                        {region.length ? <CovidData data={region}/> : null}
+                      </>
+                    )
+                  }
+                </CovidContext.Consumer>
               </Box>
             </Paper>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <VaccineStats/>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <VaccineStats/>
-        </Grid>
+        <VaccineContainer/>
       </Grid>
     </Container>
   );
