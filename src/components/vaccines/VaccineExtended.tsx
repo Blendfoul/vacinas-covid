@@ -158,13 +158,11 @@ const VaccineExtended: React.FC<any> = () => {
                 <Box p={2}>
                   <Grid container direction={'row'}>
                     <Grid item xs={12}>
-                      <List>
                         {
                           data.summary.map((item, index) => (
                             <SummaryItem text={item.text} soundPath={item.sound} key={`sum-${index}`}/>
                           ))
                         }
-                      </List>
                     </Grid>
                   </Grid>
                 </Box>

@@ -1,11 +1,11 @@
 import React from "react";
-import {createStyles, ListItem, ListItemText, makeStyles} from "@material-ui/core";
+import {createStyles, List, ListItem, ListItemText, makeStyles} from "@material-ui/core";
 import {useSound} from "../../hooks/soundHook";
 import CovidContext from "../../store/CovidContext";
 
 interface SummaryItem {
   soundPath: string;
-  text: string;
+  text: string[];
 }
 
 const useStyles = makeStyles(() => createStyles({
@@ -31,11 +31,12 @@ const SummaryItem: React.FC<SummaryItem> = ({soundPath, text}) => {
     <CovidContext.Consumer>
       {
         ({enabled}) => (
-          <ListItem
+          <List
             onMouseEnter={() => enabled ? startSound() : null}
-            onMouseLeave={() => enabled ? stopSound() : null}>
-            <ListItemText primary={text} className={classes.text}/>
-          </ListItem>
+            onMouseLeave={() => enabled ? stopSound() : null}
+          >
+            {text.map(textItem => <ListItem><ListItemText primary={textItem} className={classes.text}/></ListItem>)}
+          </List>
         )
       }
     </CovidContext.Consumer>

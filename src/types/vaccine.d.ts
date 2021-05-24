@@ -16,7 +16,7 @@ export interface Vaccine {
 }
 
 export interface Summary{
-  text: string;
+  text: string[];
   sound: string;
 }
 
